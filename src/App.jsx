@@ -116,10 +116,10 @@ function App() {
         </div>
       </div>
 
-      <footer className="fixed bottom-0 left-0 right-0 bg-white p-1 text-center text-sm">
+      {/* <footer className="fixed bottom-0 left-0 right-0 bg-white p-1 text-center text-sm">
         <a className="text-blue-800 underline px-5" href="https://twitter.com/Aniket_16May">Made with ❤️ by Aniket</a>
         <a className="text-blue-800 underline px-5" href="https://github.com/aniketsinha2002">Source Code</a>
-      </footer>
+      </footer> */}
 
     </div>
   );
