@@ -166,15 +166,19 @@ const handleNoButtonHover = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="font-bold text-pink-600 px-4"
+            className="px-6 text-center font-bold text-pink-600"
           >
-            <div className="text-2xl sm:text-3xl md:text-5xl whitespace-nowrap">
-              Promise you won't overthink this? 🥹
-            </div>
+            <span className="block text-2xl sm:text-3xl md:text-5xl leading-tight">
+              Promise you won't
+              <br className="sm:hidden" />
+              {" "}overthink this? 🥹
+            </span>
 
-            <div className="mt-3 text-3xl sm:text-4xl md:text-6xl whitespace-nowrap">
-              But would you like to go out with me? 💕
-            </div>
+            <span className="block mt-4 text-3xl sm:text-4xl md:text-6xl leading-tight">
+              But would you like
+              <br className="sm:hidden" />
+              {" "}to go out with me? 💕
+            </span>
           </motion.h1>
 
           {/* Buttons */}
@@ -233,6 +237,7 @@ const handleNoButtonHover = () => {
       <div className="min-h-screen bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400 flex justify-center items-center p-6">
 
         <div className="w-full max-w-md sm:max-w-xl mx-auto">
+
 
           {/* Progress */}
 
@@ -293,64 +298,65 @@ const handleNoButtonHover = () => {
           )}
 
           {step===3&&(
+            <div className="w-full max-w-md mx-auto px-5">
+              <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-xl p-6 space-y-5">
+                <h2 className="text-2xl sm:text-3xl font-bold text-pink-600 text-center">
+                  When are we going? 💕
+                </h2>
 
-          <div className="w-full max-w-md mx-auto">
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className="
+                    w-full
+                    h-14
+                    px-4
+                    rounded-2xl
+                    border border-pink-200
+                    bg-white
+                    text-base
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-pink-400
+                    transition
+                  "
+                />
 
-          <h2 className="text-3xl text-pink-600 font-bold mb-6">
-          When are we going? 💕
-          </h2>
+                <select
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                  className="
+                    w-full
+                    h-14
+                    px-4
+                    rounded-2xl
+                    border border-pink-200
+                    bg-white
+                    text-base
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-pink-400
+                    transition
+                  "
+                >
+                  <option value="">🕒 Select Time</option>
+                  <option>🌞 Breakfast</option>
+                  <option>🍜 Lunch</option>
+                  <option>🌙 Dinner</option>
+                  <option>🕖 7:00 PM</option>
+                  <option>🕗 8:00 PM</option>
+                  <option>🕘 9:00 PM</option>
+                </select>
 
-          <input
-          type="date"
-          value={date}
-          onChange={(e)=>setDate(e.target.value)}
-          className="
-            w-full
-            p-4
-            text-lg
-            rounded-xl
-            border
-            "
-          />
-
-          <select
-          value={time}
-          onChange={(e)=>setTime(e.target.value)}
-          className="
-            w-full
-            p-4
-            text-lg
-            rounded-xl
-            border
-            "
-          >
-
-          <option value="">Select Time</option>
-
-          <option>Breakfast 🌞</option>
-
-          <option>Lunch 🍜</option>
-
-          <option>Dinner 🌙</option>
-
-          <option>7:00 PM</option>
-
-          <option>8:00 PM</option>
-
-          <option>9:00 PM</option>
-
-          </select>
-
-          <button
-          className={buttonClass}
-          onClick={()=>setStep(4)}
-          >
-
-          Okay, Next
-
-          </button>
-
-          </div>
+                <button
+                  onClick={() => setStep(4)}
+                  className={`${buttonClass} w-full h-14 rounded-2xl text-lg font-semibold active:scale-95 transition-transform`}
+                >
+                  Okay, Next 💖
+                </button>
+              </div>
+            </div>
 
           )}
 
