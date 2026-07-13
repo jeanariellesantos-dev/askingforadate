@@ -169,7 +169,7 @@ const handleNoButtonHover = () => {
             className="px-6 text-center font-bold text-pink-600"
           >
             <span className="block text-2xl sm:text-3xl md:text-5xl leading-tight">
-              Promise you won't
+              Hi Kessiah, promise you won't
               <br className="sm:hidden" />
               {" "}overthink this? 🥹
             </span>
