@@ -17,23 +17,24 @@ function App() {
   const [foods, setFoods] = useState([]);
 
   const buttonClass =
-"mt-8 w-full rounded-full bg-pink-600 hover:bg-pink-700 text-white py-4 text-xl font-bold transition-all duration-300 hover:scale-105 shadow-lg";
-
+"mt-8 w-full rounded-full bg-pink-600 hover:bg-pink-700 text-white py-3 sm:py-4 text-lg sm:text-xl font-bold transition-all duration-300 hover:scale-105 shadow-lg";
 
     const foodOptions = [
     "Samgyupsal",
+    "Hotpot",
     "Coffee",
     "Ramen",
     "Burgers",
-    "Chicken Dinner",
+    "Chicken",
   ];
 
   const foodIcons = {
   "Samgyupsal": "🥩",
+  "Hotpot": "🍲",
   "Coffee": "☕",
   "Ramen": "🍜",
   "Burgers": "🍔",
-  "Chicken Dinner": "🍗",
+  "Chicken": "🍗",
 };
 
   const toggleFood = (food) => {
@@ -124,66 +125,120 @@ const handleNoButtonHover = () => {
 
   return (
   <>
-    {step === 1 ? (
-      <div className="min-h-screen bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400 flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
-
-        <img
-          src={gif4}
-          alt=""
-          className="absolute top-6 right-6 w-16 md:w-20"
-        />
-
-        <motion.img
-          src={gif1}
-          alt="cute"
-          className="w-72 md:w-96 mb-8"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-        />
-
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl font-bold text-pink-600 mb-12"
+      {step === 1 ? (
+        <div
+          className="
+            relative
+            min-h-screen
+            bg-gradient-to-br
+            from-pink-200
+            via-pink-300
+            to-pink-400
+            flex
+            flex-col
+            items-center
+            justify-center
+            text-center
+            overflow-hidden
+            px-6
+            py-8
+          "
         >
-          Hey, do you wanna go out with me? 💕
-        </motion.h1>
+          {/* Floating GIF */}
+          <img
+            src={gif4}
+            alt=""
+            className="absolute top-5 right-5 w-14 sm:w-20"
+          />
 
-        <div className="relative flex items-center justify-center gap-6 h-24 w-full">
+          {/* Main GIF */}
+          <motion.img
+            src={gif1}
+            alt="cute"
+            className="w-52 sm:w-64 md:w-80 mb-6"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.4 }}
+          />
 
-          <button
-            onClick={() => {
-              const audio = new Audio(bgaudio);
-              audio.play();
-              setStep(2);
-            }}
-            className="bg-pink-600 hover:bg-pink-700 text-white px-12 py-4 rounded-full text-2xl font-bold shadow-xl transition-all hover:scale-105"
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="font-bold text-pink-600 px-4"
           >
-            YES ❤️
-          </button>
+            <div className="text-2xl sm:text-3xl md:text-5xl whitespace-nowrap">
+              Promise you won't overthink this? 🥹
+            </div>
 
-          <button
-            style={noButtonStyle}
-            onMouseEnter={handleNoButtonHover}
-            onTouchStart={handleNoButtonTouch}
-            className="bg-gray-400 hover:bg-gray-500 text-white px-12 py-4 rounded-full text-2xl font-bold transition-all absolute"
-          >
-            NO 😝
-          </button>
+            <div className="mt-3 text-3xl sm:text-4xl md:text-6xl whitespace-nowrap">
+              But would you like to go out with me? 💕
+            </div>
+          </motion.h1>
 
+          {/* Buttons */}
+          <div className="relative flex items-center justify-center mt-10 h-24 w-full">
+
+            <button
+              onClick={() => {
+                const audio = new Audio(bgaudio);
+                audio.play();
+                setStep(2);
+              }}
+              className="
+                bg-pink-600
+                hover:bg-pink-700
+                text-white
+                rounded-full
+                px-10
+                sm:px-12
+                py-3
+                text-lg
+                sm:text-xl
+                font-bold
+                shadow-xl
+                transition-all
+                duration-300
+                hover:scale-105
+                mr-2
+              "
+            >
+              YES ❤️
+            </button>
+
+            <button
+              style={noButtonStyle}
+              onMouseEnter={handleNoButtonHover}
+              onTouchStart={handleNoButtonTouch}
+              className="
+                absolute
+                bg-gray-400
+                hover:bg-gray-500
+                text-white
+                rounded-full
+                px-10
+                py-3
+                text-lg
+                font-bold
+                transition-all
+              "
+            >
+              NO 😝
+            </button>
+
+          </div>
         </div>
-
-      </div>
-    ) : (
+      ) : (
       <div className="min-h-screen bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400 flex justify-center items-center p-6">
 
-        <div className="w-full max-w-2xl">
+        <div className="w-full max-w-md sm:max-w-xl mx-auto">
 
           {/* Progress */}
 
           <div className="mb-6">
 
-            <p className="text-center text-pink-700 font-semibold">
+           <p className="text-center text-sm sm:text-base text-pink-700 font-semibold">
               Step {step} of 5
             </p>
 
@@ -203,7 +258,14 @@ const handleNoButtonHover = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="bg-white rounded-3xl shadow-2xl p-8"
+          className="
+              bg-white
+              rounded-3xl
+              shadow-2xl
+              p-5
+              sm:p-8
+              mx-2
+              "
         >
 
           {step === 2 && (
@@ -216,7 +278,7 @@ const handleNoButtonHover = () => {
           <img
             src={gif6}
             alt=""
-            className="mx-auto w-60 mb-6"
+            className="mx-auto w-44 sm:w-60 mb-6"
             />
 
           <button
@@ -242,13 +304,25 @@ const handleNoButtonHover = () => {
           type="date"
           value={date}
           onChange={(e)=>setDate(e.target.value)}
-          className="w-full p-3 rounded-xl border mb-4"
+          className="
+            w-full
+            p-4
+            text-lg
+            rounded-xl
+            border
+            "
           />
 
           <select
           value={time}
           onChange={(e)=>setTime(e.target.value)}
-          className="w-full p-3 rounded-xl border"
+          className="
+            w-full
+            p-4
+            text-lg
+            rounded-xl
+            border
+            "
           >
 
           <option value="">Select Time</option>
@@ -292,7 +366,10 @@ const handleNoButtonHover = () => {
               💕 You can choose as many as you'd like!
             </p>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid
+            grid-cols-2
+            sm:grid-cols-3
+            gap-3">
 
           {foodOptions.map(food=>(
             <div
@@ -301,8 +378,9 @@ const handleNoButtonHover = () => {
               className={`
                 cursor-pointer
                 rounded-2xl
-                p-5
-                text-lg
+                 p-4
+                text-base
+                sm:text-lg
                 font-semibold
                 transition-all
                 duration-300
@@ -316,7 +394,7 @@ const handleNoButtonHover = () => {
                 }
               `}
             >
-              <div className="text-5xl mb-3">
+              <div className="text-4xl sm:text-5xl mb-3">
                 {foodIcons[food]}
               </div>
 
@@ -345,27 +423,27 @@ const handleNoButtonHover = () => {
         {step === 5 && (
           <div className="w-full">
 
-            <h2 className="text-4xl font-bold text-pink-600 text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-pink-600 text-center mb-8">
               ❤️ Our Date Plan ❤️
             </h2>
 
             <div className="space-y-4">
 
-              <div className="bg-pink-50 rounded-2xl p-5 border border-pink-200">
+              <div className="bg-pink-50 rounded-2xl p-4 sm:p-5 border border-pink-200">
                 <p className="text-sm text-pink-500 font-semibold mb-1">📅 Date</p>
                 <p className="text-xl font-bold text-gray-700">
                   {date || "-"}
                 </p>
               </div>
 
-              <div className="bg-pink-50 rounded-2xl p-5 border border-pink-200">
+              <div className="bg-pink-50 rounded-2xl p-4 sm:p-5 border border-pink-200">
                 <p className="text-sm text-pink-500 font-semibold mb-1">🕒 Time</p>
                 <p className="text-xl font-bold text-gray-700">
                   {time || "-"}
                 </p>
               </div>
 
-              <div className="bg-pink-50 rounded-2xl p-5 border border-pink-200">
+              <div className="bg-pink-50 rounded-2xl p-4 sm:p-5 border border-pink-200">
                 <p className="text-sm text-pink-500 font-semibold mb-3">
                   🍽 Food
                 </p>
@@ -375,7 +453,7 @@ const handleNoButtonHover = () => {
                     foods.map((food) => (
                       <span
                         key={food}
-                        className="bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
+                        className="bg-pink-500 text-white px-3 py-2 text-sm rounded-full text-sm font-semibold"
                       >
                         {food}
                       </span>
